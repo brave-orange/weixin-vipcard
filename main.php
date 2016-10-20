@@ -49,7 +49,7 @@ imagedestroy($dst);
 
 //信息写入数据库
 
-$con = mysql_connect("localhost","root","wang");
+$con = mysql_connect("localhost","root","****");
 mysql_query("set names 'utf8'");
 if (!$con)
   {
