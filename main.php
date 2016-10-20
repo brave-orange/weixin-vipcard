@@ -10,23 +10,23 @@ $stname = $_POST['stNAME'];
 $bumen = $_POST['bumen'];
 
 
-if($name==null || $sex==null || $sid=NULL || $xueyuan=null || $banji==null || $qq=null || $phone==null¡¡|| $stname==null || bumen==null)
+if($name==null || $sex==null || $sid==NULL || $xueyuan==null || $banji==null || $qq==null || $phone==nullã€€|| $stname==null || bumen==null)
 {
-	 echo "ÐÅÏ¢ÊäÈë²»È«£¬3Ãëºó½«·µ»Ø×¢²áÒ³Ãæ";
+	 echo "ä¿¡æ¯è¾“å…¥ä¸å…¨ï¼Œ3ç§’åŽå°†è¿”å›žæ³¨å†Œé¡µé¢";
 	header("refresh:3;url = form.html");
 	exit;
 }
 $dst_path = 'bkimage.png';
-//´´½¨Í¼Æ¬µÄÊµÀý
+//åˆ›å»ºå›¾ç‰‡çš„å®žä¾‹
 $dst = imagecreatefromstring(file_get_contents($dst_path));
-//´òÉÏÎÄ×Ö
-$font = 'ÃÔÄã¼òººÕæ¹ã±ê.ttf';//×ÖÌå
-$white = imagecolorallocate($dst, 0xFF, 0xFF, 0xFF);//×ÖÌåÑÕÉ«
-$blue = imagecolorallocate($dst, 0x09, 0xc4, 0xc6);//×ÖÌåÑÕÉ«
+//æ‰“ä¸Šæ–‡å­—
+$font = 'è¿·ä½ ç®€æ±‰çœŸå¹¿æ ‡.ttf';//å­—ä½“
+$white = imagecolorallocate($dst, 0xFF, 0xFF, 0xFF);//å­—ä½“é¢œè‰²
+$blue = imagecolorallocate($dst, 0x09, 0xc4, 0xc6);//å­—ä½“é¢œè‰²
 $black = imagecolorallocate($dst, 0xDC, 0x50, 0x00);
-imagefttext($dst, 43, 0, 110, 400, $white, $font,$name);//ÐÕÃû
+imagefttext($dst, 43, 0, 110, 400, $white, $font,$name);//å§“å
 
-$font = 'ººÒÇÈ«ÌÆÊ«¼ò.ttf';//²¿ÃÅµÈ×ÖÌå
+$font = 'æ±‰ä»ªå…¨å”è¯—ç®€.ttf';//éƒ¨é—¨ç­‰å­—ä½“
 $ID = "ID:chzumaker".$sid;
 imagefttext($dst, 20, 0, 810, 350, $blue, $font,$stname);
 imagefttext($dst, 20, 0, 810, 395, $blue, $font,$bumen);
@@ -35,7 +35,7 @@ imagefttext($dst, 20, 0, 810, 485, $blue, $font,$xueyuan);
 imagefttext($dst, 18, 0, 1100, 770, $black, $font,$ID);
 
 /******************************************************/
-//Ð´Èë¶þÎ¬Âë
+//å†™å…¥äºŒç»´ç 
 $src_path =  "http://qr.liantu.com/api.php?text=http://brave-orange.cn/weixin/view.php?id=$sid";
 $src = imagecreatefromstring(file_get_contents($src_path));
 list($src_w, $src_h) = getimagesize($src_path);
@@ -44,11 +44,10 @@ imagecopymerge($dst, $src, 1140, 10, 15, 15, $src_w-15, $src_h-15, 60);
 header('Content-Type: image/png');
   //imagepng($dst);
   imagejpeg($dst,'./img/'.$sid.'.jpg');
-  echo "×¢²á³É¹¦£¡ÕýÔÚ¼ÓÔØ...";
- header("refresh:3;url = success.html");
+
 imagedestroy($dst);
 
-//ÐÅÏ¢Ð´ÈëÊý¾Ý¿â
+//ä¿¡æ¯å†™å…¥æ•°æ®åº“
 
 $con = mysql_connect("localhost","root","wang");
 mysql_query("set names 'utf8'");
@@ -65,7 +64,8 @@ if (!mysql_query($sql,$con))
   die('Error: ' . mysql_error());
   }
 mysql_close($con);
-
+  echo "æ³¨å†ŒæˆåŠŸï¼æ­£åœ¨åŠ è½½...";
+ header("refresh:3;url = success.html");
 
 ?>
 
